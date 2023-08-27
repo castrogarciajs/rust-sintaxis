@@ -1,3 +1,5 @@
+use std::io;
+
 fn main() {
     // comentarios con rust
     /*
@@ -82,7 +84,6 @@ fn main() {
 
     println!("{} - {}", my_bool, false);
 
-
     // costantes
 
     // es obligatorio definir el tipo de dato de una constante
@@ -91,7 +92,6 @@ fn main() {
     const MY_BOOL_CONST: bool = true;
     // MY_CONST = ""; No funciona error
     println!("{} - {}", MY_CONST, MY_BOOL_CONST);
-
 
     // control de flujos
 
@@ -128,7 +128,6 @@ fn main() {
     //     println!("OMG - {}", values);
     // }
 
-    
     // listas
 
     let mut my_list: Vec<&str> = vec!["string", "solo es string no acepta numeros"];
@@ -137,13 +136,25 @@ fn main() {
     println!("{:?}", my_list);
     my_list = vec!["nuevo vector"];
     println!("{:?}", my_list);
-
+    println!("{:?}", my_list[0]);
 
     // cuando usamos constantes en rust en vectores debe saber cuantos elemento tendra la constante se leen en tiempo de compilacion
 
     // para usar constante con matrices debes usar esta forma especifcando tipo de dato y cantidad de elementos
     const MY_VECTOR_INTEGER: [i64; 2] = [10, 20];
 
-    
     println!("{:?}", MY_VECTOR_INTEGER);
+
+    // pense que se iba quejar el compilador ajajajaja
+    let string_vacio = "";
+    println!("{}", string_vacio);
+    println!("Escribe: ");
+
+    let mut valor: String = String::new();
+
+    io::stdin()
+        .read_line(&mut valor)
+        .expect("Ha fallado al leer");
+
+    println!("Yo valor es : {}", valor);
 }
