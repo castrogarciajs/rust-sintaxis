@@ -166,4 +166,24 @@ fn main() {
     io::stdin()
         .read_line(&mut input)
         .expect("Hubo un error al leer");
+
+    const NUMBER_EQUAL: i64 = 10;
+    const NUMBER_EQUAL_COMPARE: i64 = 12;
+
+    if NUMBER_EQUAL < NUMBER_EQUAL_COMPARE {
+        println!("{}", true);
+    } else {
+        println!("{}", false);
+    }
+
+    let number_par: Vec<i32> = vec![10, 20,30];
+
+    println!("{:?}", number_par);
+
+    let mut response_client = String::new();
+
+    println!("Escribe una entrada");
+    io::stdin().read_line(&mut response_client).expect("Error al escribir");
+
+    println!("{}", response_client);
 }
