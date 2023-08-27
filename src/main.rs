@@ -145,6 +145,10 @@ fn main() {
 
     println!("{:?}", MY_VECTOR_INTEGER);
 
+    let mut my_string_new = String::new();
+
+    my_string_new.push_str("sstrig");
+    my_string_new.push_str("sstrigasdasd");
     // pense que se iba quejar el compilador ajajajaja
     let string_vacio = "";
     println!("{}", string_vacio);
@@ -157,4 +161,9 @@ fn main() {
         .expect("Ha fallado al leer");
 
     println!("Yo valor es : {}", valor);
+
+    let mut input: String = String::new();
+    io::stdin()
+        .read_line(&mut input)
+        .expect("Hubo un error al leer");
 }
