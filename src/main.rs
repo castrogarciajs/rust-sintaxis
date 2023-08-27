@@ -66,15 +66,29 @@ fn main() {
     println!("{}", my_variable_inmutable);
 
     // integer float f64
-    let value_integer = 10.10;
+    let value_integer: f64 = 10.10;
 
     print!("{}", value_integer);
 
     // intenger int i34
-    let mut integer_int = 10;
+    let mut integer_int: i32 = 10;
     println!("{}", integer_int);
 
     integer_int = integer_int + 2;
 
     println!("{}", integer_int);
+
+    let my_bool: bool = true;
+
+    println!("{} - {}", my_bool, false);
+
+
+    // costantes
+
+    // es obligatorio definir el tipo de dato de una constante
+    const MY_CONST: f64 = 3.14;
+
+    // MY_CONST = ""; No funciona error
+    println!("{}", MY_CONST);
+
 }
