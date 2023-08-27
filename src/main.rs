@@ -129,4 +129,21 @@ fn main() {
     // }
 
     
+    // listas
+
+    let mut my_list: Vec<&str> = vec!["string", "solo es string no acepta numeros"];
+
+    my_list.push("value"); // añadiendo valor
+    println!("{:?}", my_list);
+    my_list = vec!["nuevo vector"];
+    println!("{:?}", my_list);
+
+
+    // cuando usamos constantes en rust en vectores debe saber cuantos elemento tendra la constante se leen en tiempo de compilacion
+
+    // para usar constante con matrices debes usar esta forma especifcando tipo de dato y cantidad de elementos
+    const MY_VECTOR_INTEGER: [i64; 2] = [10, 20];
+
+    
+    println!("{:?}", MY_VECTOR_INTEGER);
 }
