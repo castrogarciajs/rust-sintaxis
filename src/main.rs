@@ -132,7 +132,7 @@ fn main() {
 
     let mut my_list: Vec<&str> = vec!["string", "solo es string no acepta numeros"];
 
-    my_list.push("value"); // añadiendo valor
+    my_list.push("value"); // añadiendo valor push
     println!("{:?}", my_list);
     my_list = vec!["nuevo vector"];
     println!("{:?}", my_list);
@@ -170,20 +170,81 @@ fn main() {
     const NUMBER_EQUAL: i64 = 10;
     const NUMBER_EQUAL_COMPARE: i64 = 12;
 
-    if NUMBER_EQUAL < NUMBER_EQUAL_COMPARE {
+    if NUMBER_EQUAL < NUMBER_EQUAL_COMPARE && NUMBER_EQUAL > NUMBER_EQUAL_COMPARE {
         println!("{}", true);
     } else {
         println!("{}", false);
     }
 
-    let number_par: Vec<i32> = vec![10, 20,30];
+    let number_par: Vec<i32> = vec![10, 20, 30];
 
     println!("{:?}", number_par);
 
     let mut response_client = String::new();
 
     println!("Escribe una entrada");
-    io::stdin().read_line(&mut response_client).expect("Error al escribir");
+    io::stdin()
+        .read_line(&mut response_client)
+        .expect("Error al escribir");
 
     println!("{}", response_client);
+
+    let vector_bool: Vec<bool> = vec![true, false, true, false, true, false];
+
+    println!("{:?}", vector_bool);
+    println!("{:?}", vector_bool[0]);
+    println!("{:?}", vector_bool[1]);
+    println!("{:?}", vector_bool[2]);
+
+    // tipos de datos
+    // variables mut e inmutables
+    // constantes
+    // control de flujo
+    // vectores
+
+    // 1. primeros ejercicios de rust
+
+    // #1. Declara variables de diferentes tipos de datos: enteros, flotantes, booleanos y cadenas.
+    //         Asigna valores a estas variables y observa cómo se comportan.
+
+    // -------------------------------------- SOLUCION --------------------------------- //
+
+    let type_string_variable = "Variable de tipo string";
+    let type_number_integer_variable = 10;
+    let type_number_float_variable = 3.14;
+    let type_bool_variable = true;
+
+    println!(
+        "string: {} - number: {} - float: {} - bool: {}",
+        type_string_variable,
+        type_number_integer_variable,
+        type_number_float_variable,
+        type_bool_variable
+    );
+
+    // #2 Declara una variable mutable y cambia su valor.
+//        Intenta cambiar el valor de una variable inmutable y observa el error que obtienes.
+
+// -------------------------------------------SOLUCION --------------------------------------//
+
+let mut variable_mutable_que_va_a_cambiar_su_valor = "Valor ha cambiar";
+
+println!("primer valor: {}", variable_mutable_que_va_a_cambiar_su_valor);
+variable_mutable_que_va_a_cambiar_su_valor = "Valor cmbiado";
+
+println!("nuevo valor: {}", variable_mutable_que_va_a_cambiar_su_valor);
+
+
+let variable_inmutable_por_defecto = "inmutable";
+
+// variable_inmutable_por_defecto = "error"; // error `#[warn(unused_assignments)]`
+println!("{}", variable_inmutable_por_defecto);
+
+// #3 Declara una constante y asígnale un valor.
+//    Intenta cambiar el valor de una constante y observa el error que obtienes.
+
+const VALOR_CONSTANTES_NO_PUEDE_CAMBIAR: &str = "string constante";
+
+// VALOR_CONSTANTES_NO_PUEDE_CAMBIAR = "error";
+println!("{}", VALOR_CONSTANTES_NO_PUEDE_CAMBIAR);
 }
