@@ -1,3 +1,4 @@
+use std::collections::HashSet;
 use std::io;
 
 fn main() {
@@ -19,6 +20,12 @@ fn main() {
     // #[warn(ununsed_variable)] -- Cuando no se usa una variable
     let mut my_string: &str = "Hello World";
 
+    let len_string = my_string.len();
+
+    println!("{}", len_string);
+    // let mut string_bytes = my_string.bytes();
+
+    // println!("{}", string_bytes);
     println!("{my_string}");
     // my_string = "CAMBIAMOS EL VALOR"; cannot assign twice to immutable variable `my_string`
 
@@ -176,6 +183,7 @@ fn main() {
         println!("{}", false);
     }
 
+    
     let number_par: Vec<i32> = vec![10, 20, 30];
 
     println!("{:?}", number_par);
@@ -223,28 +231,48 @@ fn main() {
     );
 
     // #2 Declara una variable mutable y cambia su valor.
-//        Intenta cambiar el valor de una variable inmutable y observa el error que obtienes.
+    //        Intenta cambiar el valor de una variable inmutable y observa el error que obtienes.
 
-// -------------------------------------------SOLUCION --------------------------------------//
+    // -------------------------------------------SOLUCION --------------------------------------//
 
-let mut variable_mutable_que_va_a_cambiar_su_valor = "Valor ha cambiar";
+    let mut variable_mutable_que_va_a_cambiar_su_valor = "Valor ha cambiar";
 
-println!("primer valor: {}", variable_mutable_que_va_a_cambiar_su_valor);
-variable_mutable_que_va_a_cambiar_su_valor = "Valor cmbiado";
+    println!(
+        "primer valor: {}",
+        variable_mutable_que_va_a_cambiar_su_valor
+    );
+    variable_mutable_que_va_a_cambiar_su_valor = "Valor cmbiado";
 
-println!("nuevo valor: {}", variable_mutable_que_va_a_cambiar_su_valor);
+    println!(
+        "nuevo valor: {}",
+        variable_mutable_que_va_a_cambiar_su_valor
+    );
 
+    let variable_inmutable_por_defecto = "inmutable";
 
-let variable_inmutable_por_defecto = "inmutable";
+    // variable_inmutable_por_defecto = "error"; // error `#[warn(unused_assignments)]`
+    println!("{}", variable_inmutable_por_defecto);
 
-// variable_inmutable_por_defecto = "error"; // error `#[warn(unused_assignments)]`
-println!("{}", variable_inmutable_por_defecto);
+    // #3 Declara una constante y asígnale un valor.
+    //    Intenta cambiar el valor de una constante y observa el error que obtienes.
 
-// #3 Declara una constante y asígnale un valor.
-//    Intenta cambiar el valor de una constante y observa el error que obtienes.
+    const VALOR_CONSTANTES_NO_PUEDE_CAMBIAR: &str = "string constante";
 
-const VALOR_CONSTANTES_NO_PUEDE_CAMBIAR: &str = "string constante";
+    // VALOR_CONSTANTES_NO_PUEDE_CAMBIAR = "error";
+    println!("{}", VALOR_CONSTANTES_NO_PUEDE_CAMBIAR);
 
-// VALOR_CONSTANTES_NO_PUEDE_CAMBIAR = "error";
-println!("{}", VALOR_CONSTANTES_NO_PUEDE_CAMBIAR);
+    // sets
+
+    let mut my_first_set_in_rust: HashSet<&str> = ["sebastian", "garcia"].into_iter().collect();
+    let mut sets_with_number: HashSet<i64> = [10, 20, 30].into_iter().collect();
+    let mut sets_with_bool: HashSet<bool> = [true, false].into_iter().collect();
+
+    sets_with_number.insert(10);
+    my_first_set_in_rust.insert("garcia");
+    sets_with_bool.insert(false);
+    sets_with_bool.remove(&true);
+    println!("{:?}", my_first_set_in_rust);
+    println!("{:?}", sets_with_number);
+    println!("{:?}", sets_with_bool);
+    
 }
