@@ -1,5 +1,4 @@
 fn main() {
-
     // comentarios con rust
     /*
     Multiple comentarios
@@ -19,23 +18,22 @@ fn main() {
     let mut my_string: &str = "Hello World";
 
     println!("{my_string}");
-   // my_string = "CAMBIAMOS EL VALOR"; cannot assign twice to immutable variable `my_string`
+    // my_string = "CAMBIAMOS EL VALOR"; cannot assign twice to immutable variable `my_string`
 
-   // las variables por defecto son inmutables
+    // las variables por defecto son inmutables
 
-   my_string = "Aqui cambio la cadena de texto";
+    my_string = "Aqui cambio la cadena de texto";
 
     println!("Esta es mi variable: {}", my_string);
     // my_string = 6; tipado fuerte
 
-    // expected String, found &strrust-analyzerE0308 
+    // expected String, found &strrust-analyzerE0308
     // las cadenas de texto se representan de dos formas
 
     // &str cadena utf8 de una longitud fija reserva el maximo de mem0ria
 
     // string vamos redifiniendo el tamaño de la cadena de texto
     // let new_variable: String = "Esto es una cadena de texto"; --> rust se va quejar
-
 
     let redifiniendo_string = String::from("Valor de la cadena de textp");
 
@@ -56,12 +54,27 @@ fn main() {
 
     println!("{}", aunmento_de_bytes);
 
-
     let mut bytes_fijos = "No puede aunmentar la cadena establecida";
 
     println!("{}", bytes_fijos);
 
     bytes_fijos = "menos";
 
-println!("{}", bytes_fijos);
+    println!("{}", bytes_fijos);
+
+    let my_variable_inmutable: &str = "Variable inmutable por defecto";
+    println!("{}", my_variable_inmutable);
+
+    // integer float f64
+    let value_integer = 10.10;
+
+    print!("{}", value_integer);
+
+    // intenger int i34
+    let mut integer_int = 10;
+    println!("{}", integer_int);
+
+    integer_int = integer_int + 2;
+
+    println!("{}", integer_int);
 }
