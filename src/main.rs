@@ -86,9 +86,47 @@ fn main() {
     // costantes
 
     // es obligatorio definir el tipo de dato de una constante
+    // las constantes no pueden mutar
     const MY_CONST: f64 = 3.14;
-
+    const MY_BOOL_CONST: bool = true;
     // MY_CONST = ""; No funciona error
-    println!("{}", MY_CONST);
+    println!("{} - {}", MY_CONST, MY_BOOL_CONST);
 
+
+    // control de flujos
+
+    if MY_BOOL_CONST {
+        println!("Funciona");
+    }
+    if MY_CONST == 3.14 {
+        println!("Es igual");
+    }
+
+    if true {
+        println!("true");
+    } else {
+        println!("false");
+    }
+
+    if true {
+        println!("true");
+    } else if true {
+        println!("true");
+    } else {
+        println!("false");
+    }
+
+    if true && true {
+        println!("operadores");
+    }
+
+    if false || true {
+        println!("operadores ||");
+    }
+    // interesantes
+    // if let values = 10 == 10 {
+    //     println!("OMG - {}", values);
+    // }
+
+    
 }
