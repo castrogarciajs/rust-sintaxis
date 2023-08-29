@@ -1,4 +1,4 @@
-use std::collections::HashSet;
+use std::collections::{HashMap, HashSet};
 use std::io;
 
 fn main() {
@@ -183,7 +183,6 @@ fn main() {
         println!("{}", false);
     }
 
-    
     let number_par: Vec<i32> = vec![10, 20, 30];
 
     println!("{:?}", number_par);
@@ -269,10 +268,53 @@ fn main() {
 
     sets_with_number.insert(10);
     my_first_set_in_rust.insert("garcia");
-    sets_with_bool.insert(false);
-    sets_with_bool.remove(&true);
+    sets_with_bool.insert(false); sets_with_bool.remove(&true);
     println!("{:?}", my_first_set_in_rust);
     println!("{:?}", sets_with_number);
     println!("{:?}", sets_with_bool);
-    
+
+    // maps
+    let maps: HashMap<&str, i32> = vec![("sebastian", 10), ("jhoan", 32)].into_iter().collect();
+
+    println!("{:?}", maps);
+
+    // bucles
+
+let iterator_vecto: Vec<&str> =vec!["A", "B", "C"]; 
+let string_iterator: String = String::from("SEBASTIAN");
+
+
+println!("{}", string_iterator);
+for values in iterator_vecto {
+    println!("{}", values);
+}
+for values_set in my_first_set_in_rust {
+    println!("{}", values_set);
+}
+
+for (key, values) in maps  {
+    println!("key: {} - values: {}", key, values);
+}
+// no iterator String and str
+// for string_values in string_iterator {
+//     println!("{}", string_values);
+// }
+
+// usa el metodo chars para indicarle a rust que son caracteres
+for (index, string_values) in string_iterator.chars().enumerate() {
+    println!("{} - {}", string_values, index);
+}
+
+let mut my_counter: usize = 0;
+
+while my_counter < my_list.len() {
+    my_counter += 1;
+    println!("{}", my_counter);
+}
+my_first_function();
+}
+
+
+fn my_first_function() {
+    println!("First funtion in rust");
 }
