@@ -268,7 +268,8 @@ fn main() {
 
     sets_with_number.insert(10);
     my_first_set_in_rust.insert("garcia");
-    sets_with_bool.insert(false); sets_with_bool.remove(&true);
+    sets_with_bool.insert(false);
+    sets_with_bool.remove(&true);
     println!("{:?}", my_first_set_in_rust);
     println!("{:?}", sets_with_number);
     println!("{:?}", sets_with_bool);
@@ -280,41 +281,64 @@ fn main() {
 
     // bucles
 
-let iterator_vecto: Vec<&str> =vec!["A", "B", "C"]; 
-let string_iterator: String = String::from("SEBASTIAN");
+    let iterator_vecto: Vec<&str> = vec!["A", "B", "C"];
+    let string_iterator: String = String::from("SEBASTIAN");
 
+    println!("{}", string_iterator);
+    for values in iterator_vecto {
+        println!("{}", values);
+    }
+    for values_set in my_first_set_in_rust {
+        println!("{}", values_set);
+    }
 
-println!("{}", string_iterator);
-for values in iterator_vecto {
-    println!("{}", values);
+    for (key, values) in maps {
+        println!("key: {} - values: {}", key, values);
+    }
+    // no iterator String and str
+    // for string_values in string_iterator {
+    //     println!("{}", string_values);
+    // }
+
+    // usa el metodo chars para indicarle a rust que son caracteres
+    for (index, string_values) in string_iterator.chars().enumerate() {
+        println!("{} - {}", string_values, index);
+    }
+
+    let mut my_counter: usize = 0;
+
+    while my_counter < my_list.len() {
+        my_counter += 1;
+        println!("{}", my_counter);
+    }
+
+    // funciones
+    my_first_function();
+
+    //
+
+    fn three_function() {
+        println!("three function");
+    }
+    three_function();
 }
-for values_set in my_first_set_in_rust {
-    println!("{}", values_set);
-}
-
-for (key, values) in maps  {
-    println!("key: {} - values: {}", key, values);
-}
-// no iterator String and str
-// for string_values in string_iterator {
-//     println!("{}", string_values);
-// }
-
-// usa el metodo chars para indicarle a rust que son caracteres
-for (index, string_values) in string_iterator.chars().enumerate() {
-    println!("{} - {}", string_values, index);
-}
-
-let mut my_counter: usize = 0;
-
-while my_counter < my_list.len() {
-    my_counter += 1;
-    println!("{}", my_counter);
-}
-my_first_function();
-}
-
 
 fn my_first_function() {
     println!("First funtion in rust");
+    second_function();
 }
+
+fn second_function() {
+    println!("Second funtion");
+}
+
+// struct MyStruct {
+//     name: &str,
+//     age: i32,
+// }
+
+// impl MyStruct {
+//     fn newConstructor(name: &str, age: i32) {
+//         MyStruct { name, age }
+//     }
+// }
