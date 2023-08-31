@@ -321,6 +321,63 @@ fn main() {
         println!("three function");
     }
     three_function();
+
+    // tipo caracter
+    // El tipo char de Rust es el tipo alfabético más primitivo del lenguaje. Aquí hay algunos ejemplos de declarar valores char:
+
+    let c = 'X';
+    let z = 'Z';
+
+    println!("{} - {}", c, z);
+    // tipo tuplas
+
+    let tup: (i32, f64, u8) = (500, 3.14, 2);
+    let (x, y, z) = tup;
+
+    let tup_index_value = tup.0;
+    let tup_index_two_value = tup.1;
+
+    println!("{:?}", tup);
+    println!("{} - {} - {}", x, y, z);
+
+    println!("{} - {}", tup_index_value, tup_index_two_value);
+
+    // tipo array
+
+    let number_array = [1, 2, 3, 4, 5, 6];
+
+    let months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+    ];
+
+    let array_init = [3;5];
+
+    println!("{:?}", number_array);
+    println!("{:?}", months);
+    println!("{:?}", array_init);
+
+    let a = [1, 2, 3, 4, 5];
+    let mut client_variable = String::new();
+
+    io::stdin().read_line(&mut client_variable).expect("Error");
+
+    let client_variable: usize = client_variable.trim().parse().expect("no es un numero");
+
+    let elem = a[client_variable];
+
+    println!("{}", elem);
+
 }
 
 fn my_first_function() {
