@@ -361,7 +361,7 @@ fn main() {
         "December",
     ];
 
-    let array_init = [3;5];
+    let array_init = [3; 5];
 
     println!("{:?}", number_array);
     println!("{:?}", months);
@@ -377,9 +377,51 @@ fn main() {
     let elem = a[client_variable];
 
     println!("{}", elem);
+    let x = five();
 
+    println!("The value of x is: {x}");
+
+    // loops infinite
+
+    // esto es un bucle infinito
+    loop {
+        println!("again");
+        break;
+    }
+    let mut counter_loop = 0;
+
+    let result = loop {
+        counter_loop += 1;
+        if counter_loop == 10 {
+            break counter_loop * 2;
+        }
+    };
+
+    println!("{}", result);
+
+    let mut coun_break_loop = 0;
+    'breaking_loop: loop {
+        println!("count = {}", coun_break_loop);
+
+        let mut remaning = 10;
+        loop {
+            println!("remaning = {}", remaning);
+
+            if remaning == 9 {
+                break;
+            }
+            if coun_break_loop == 2 {
+                break 'breaking_loop;
+            }
+            remaning -= 1;
+        }
+
+        coun_break_loop += 1
+    }
 }
-
+fn five() -> i32 {
+    5
+}
 fn my_first_function() {
     println!("First funtion in rust");
     second_function();
