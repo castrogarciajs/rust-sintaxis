@@ -10,8 +10,15 @@ fn main() {
     da
     asd
      */
+    println!("Probando NVIM");
+    // desacer en nvim
     println!("Hola Rust en español"); // ";" muy importante si no el compilador molestará y no lo va compilar.
-
+    println!("hola nvim");
+    // practicando nvim
+    // flujio
+    // de
+    // neovim
+    //
     // #[warn(unused_doc_domments)] - error de comentarios
     println!("Hello, world!");
 
@@ -417,7 +424,52 @@ fn main() {
         }
 
         coun_break_loop += 1
+        // probando neovim
     }
+    println!("Neovim");
+
+    // Ownership El ownership es un conjunto de reglas que gobiernan cómo un programa de Rust administra la memoria.
+    /*Primero, echemos un vistazo a las reglas de ownership. Mantenga estas reglas en mente mientras trabajamos a través de los ejemplos que las ilustran:
+
+    Cada valor en Rust tiene un propietario.
+    Solo puede haber un propietario a la vez.
+    Cuando el propietario sale del alcance, el valor se descartará.
+
+
+     * */
+
+    // let mut n = "s";
+
+    let s1 = String::from("Clone string");
+
+    let s2 = s1.clone();
+
+    println!("{}", s2);
+
+    let owner = String::from("strnig");
+
+    tomar_ownership(owner);
+
+    let xs = 5;
+    hacer_una_copia(xs);
+
+    //  Este signo ampersands (&) representa referencia, y te permiten referirte a algún valor sin tomar la propiedad de él. La Figura 4-5 representa este concepto.
+    let usize_len = calcular_longitud(&s1);
+
+    let mut s = String::from("hola");
+
+    println!(" La longitud de {} es: {}", s1, usize_len);
+    modificar(&mut s);
+    
+    // Este error dice que este código es inválido porque no podemos prestar s como mutable más de una vez a la vez. El primer préstamo mutable está en r1 y debe durar hasta que se use en el println!, pero entre la creación de esa referencia mutable y su uso, intentamos crear otra referencia mutable en r2 que presta los mismos datos que r1.
+    // let mut s = String::from("hola");
+    // let r1 = &mut s;
+    // let r2 = &mut s;
+
+    // println!("{}, {}", r1, r2);
+
+
+
 }
 fn five() -> i32 {
     5
@@ -441,3 +493,20 @@ fn second_function() {
 //         MyStruct { name, age }
 //     }
 // }
+fn modificar(un_string: &mut String)  {
+un_string.push_str(", Mundo")
+}
+
+fn tomar_ownership(un_string: String) {
+    // un_string aparece en el ámbito
+    println!("{}", un_string);
+} // Aquí termina el ámbito, un_string es destruido con drop.
+  // La memoria es liberada.
+
+fn hacer_una_copia(un_entero: i32) {
+    // un_entero aparece en el ámbito
+    println!("{}", un_entero);
+}
+fn calcular_longitud(s: &String) -> usize {
+    s.len()
+}
