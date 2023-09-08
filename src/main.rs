@@ -460,7 +460,7 @@ fn main() {
 
     println!(" La longitud de {} es: {}", s1, usize_len);
     modificar(&mut s);
-    
+
     // Este error dice que este código es inválido porque no podemos prestar s como mutable más de una vez a la vez. El primer préstamo mutable está en r1 y debe durar hasta que se use en el println!, pero entre la creación de esa referencia mutable y su uso, intentamos crear otra referencia mutable en r2 que presta los mismos datos que r1.
     // let mut s = String::from("hola");
     // let r1 = &mut s;
@@ -468,41 +468,47 @@ fn main() {
 
     // println!("{}, {}", r1, r2);
 
-
     // El tipo slice
 
     // Los Slices te permiten referenciar a una secuencia contigua de elementos en una colección en lugar de la colección completa. Un slice es una especie de referencia, por lo que no tiene ownership.
 
-        let mut s = String::from("Hola Mundo");
+    let mut s = String::from("Hola Mundo");
 
-       let word = first_word(&s);
-       println!("{}", word);
-       s.clear();
+    let word = first_word(&s);
+    println!("{}", word);
+    s.clear();
 
-       let slice_string: String = String::from("Hello, World");
-       let len = slice_string.len();
+    let slice_string: String = String::from("Hello, World");
+    let len = slice_string.len();
 
-     let hello =  &slice_string[0..5]; // referencia a un String conocido como slice();
+    let hello = &slice_string[0..5]; // referencia a un String conocido como slice();
     let slice = &slice_string[2..len];
 
-     println!("{} - slice: {}", hello, slice);
+    println!("{} - slice: {}", hello, slice);
+
+    first_word_slice(&s);
+
+    let array_slice = [1, 2, 3, 4, 5, 6];
+
+    let slice_array = &array_slice[1..3];
+
+    println!("{:?}", slice_array);
+
+    assert_eq!(slice_array, &[2, 3]);
+
+    let string_collect = "hola mundo";
+
+    let chars = string_collect.chars().rev();
+
+    let string_iter: String = chars.collect();
+
+    println!("{}", string_iter);
     
-first_word_slice(&s);
-
-let array_slice = [1,2,3,4,5,6];
-
-let slice_array = &array_slice[1..3];
-
-println!("{:?}", slice_array);
-
-assert_eq!(slice_array, &[2,3]);
-
 }
 fn first_word(s: &String) -> usize {
     let bytes_string = s.as_bytes();
 
     for (i, &iter_string) in bytes_string.iter().enumerate() {
-        
         if iter_string == b' ' {
             return i;
         }
@@ -543,8 +549,8 @@ fn second_function() {
 //         MyStruct { name, age }
 //     }
 // }
-fn modificar(un_string: &mut String)  {
-un_string.push_str(", Mundo")
+fn modificar(un_string: &mut String) {
+    un_string.push_str(", Mundo")
 }
 
 fn tomar_ownership(un_string: String) {
