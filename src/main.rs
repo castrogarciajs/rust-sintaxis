@@ -469,7 +469,57 @@ fn main() {
     // println!("{}, {}", r1, r2);
 
 
+    // El tipo slice
 
+    // Los Slices te permiten referenciar a una secuencia contigua de elementos en una colección en lugar de la colección completa. Un slice es una especie de referencia, por lo que no tiene ownership.
+
+        let mut s = String::from("Hola Mundo");
+
+       let word = first_word(&s);
+       println!("{}", word);
+       s.clear();
+
+       let slice_string: String = String::from("Hello, World");
+       let len = slice_string.len();
+
+     let hello =  &slice_string[0..5]; // referencia a un String conocido como slice();
+    let slice = &slice_string[2..len];
+
+     println!("{} - slice: {}", hello, slice);
+    
+first_word_slice(&s);
+
+let array_slice = [1,2,3,4,5,6];
+
+let slice_array = &array_slice[1..3];
+
+println!("{:?}", slice_array);
+
+assert_eq!(slice_array, &[2,3]);
+
+}
+fn first_word(s: &String) -> usize {
+    let bytes_string = s.as_bytes();
+
+    for (i, &iter_string) in bytes_string.iter().enumerate() {
+        
+        if iter_string == b' ' {
+            return i;
+        }
+    }
+
+    s.len()
+}
+fn first_word_slice(s: &String) -> &str {
+    let bytes = s.as_bytes();
+
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[0..i];
+        }
+    }
+
+    &s[..]
 }
 fn five() -> i32 {
     5
