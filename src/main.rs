@@ -495,7 +495,6 @@ fn main() {
     println!("{:?}", slice_array);
 
     assert_eq!(slice_array, &[2, 3]);
-
     let string_collect = "hola mundo";
 
     let chars = string_collect.chars().rev();
@@ -503,7 +502,20 @@ fn main() {
     let string_iter: String = chars.collect();
 
     println!("{}", string_iter);
-    
+
+    let some_username = User {
+        active: true,
+        username: String::from("someusername"),
+        email: String::from("someusername@example.com"),
+        sing_in_count: 1,
+    };
+
+    let other_user = User {
+        email: String::from("otherusername@example.com"),
+        ..some_username
+    };
+    println!("{} - {}", some_username.email, other_user.email);
+    build_user(String::from("username-build"), some_username.email);
 }
 fn first_word(s: &String) -> usize {
     let bytes_string = s.as_bytes();
@@ -565,4 +577,29 @@ fn hacer_una_copia(un_entero: i32) {
 }
 fn calcular_longitud(s: &String) -> usize {
     s.len()
+}
+
+struct User {
+    active: bool,
+    username: String,
+    email: String,
+    sing_in_count: u64,
+}
+struct Color(i32, i32, i32);
+struct Point(i32, i32, i32);
+struct AlwaysEqual;
+
+fn build_user(username: String, email: String) {
+    let user_build = User {
+        active: true,
+        username,
+        email,
+        sing_in_count: 1,
+    };
+    let black = Color(0, 0, 0);
+    let origin = Point(0,0,0);
+
+    println!("{}", user_build.username);
+
+    let subjet = AlwaysEqual;
 }
