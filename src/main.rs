@@ -585,21 +585,80 @@ struct User {
     email: String,
     sing_in_count: u64,
 }
+
+impl User {
+    fn user_completed(&self) -> bool {
+        self.active
+    }
+    fn is_auth(&self) -> u64 {
+        self.sing_in_count
+    }
+}
+#[derive(Debug)]
 struct Color(i32, i32, i32);
+#[derive(Debug)]
 struct Point(i32, i32, i32);
+#[derive(Debug)]
 struct AlwaysEqual;
 
+#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    heigth: u32,
+}
+
+/*
+
+odas las funciones definidas dentro de un bloque impl se llaman funciones asociadas porque están asociadas con el tipo nombrado después del impl. Podemos definir funciones asociadas que no tengan self como su primer parámetro (y, por lo tanto, no sean métodos) porque no necesitan una instancia del tipo con el que trabajar. Ya hemos usado una función como esta: la función String::from que está definida en el tipo String.*/
+impl Rectangle {
+    // métodos de instancia 
+    fn area(&self) -> u32 {
+        self.width * self.heigth
+    }
+    fn width(&self) -> bool {
+        self.width > 0
+    }
+    fn can_hold(&self, other: &Rectangle) -> bool {
+        self.width > other.width && self.heigth > other.heigth
+    }
+
+    // funciones asocidas
+    fn square(size: u32) -> Self {
+        Self { width: size, heigth: size }
+    }
+
+    fn fn_greet(string: String) -> String{
+        println!("Hola {}", string);
+        string
+    }
+}
 fn build_user(username: String, email: String) {
+    let rect_one = Rectangle {
+        width: 10,
+        heigth: 15,
+    };
+    let rect_two = Rectangle {
+        width: 10,
+        heigth: 15,
+    };
+    rect_one.can_hold(&rect_two);
+    println!("{} {}", rect_one.area(), rect_one.width());
+
     let user_build = User {
         active: true,
         username,
         email,
         sing_in_count: 1,
     };
+    user_build.user_completed();
+    user_build.is_auth();
+    Rectangle::square(10);
+    Rectangle::fn_greet(String::from("Sebastian"));
     let black = Color(0, 0, 0);
-    let origin = Point(0,0,0);
+    let origin = Point(0, 0, 0);
 
-    println!("{}", user_build.username);
+    println!("{} {:?} {:?}", user_build.username, black, origin);
 
     let subjet = AlwaysEqual;
+    println!("{:?}", subjet);
 }
