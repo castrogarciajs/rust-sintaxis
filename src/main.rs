@@ -516,7 +516,14 @@ fn main() {
     };
     println!("{} - {}", some_username.email, other_user.email);
     build_user(String::from("username-build"), some_username.email);
+
+    enum_example();
+    route(IpAddrKind::V4);
+
+    
+
 }
+
 fn first_word(s: &String) -> usize {
     let bytes_string = s.as_bytes();
 
@@ -611,7 +618,7 @@ struct Rectangle {
 
 odas las funciones definidas dentro de un bloque impl se llaman funciones asociadas porque están asociadas con el tipo nombrado después del impl. Podemos definir funciones asociadas que no tengan self como su primer parámetro (y, por lo tanto, no sean métodos) porque no necesitan una instancia del tipo con el que trabajar. Ya hemos usado una función como esta: la función String::from que está definida en el tipo String.*/
 impl Rectangle {
-    // métodos de instancia 
+    // métodos de instancia
     fn area(&self) -> u32 {
         self.width * self.heigth
     }
@@ -624,10 +631,13 @@ impl Rectangle {
 
     // funciones asocidas
     fn square(size: u32) -> Self {
-        Self { width: size, heigth: size }
+        Self {
+            width: size,
+            heigth: size,
+        }
     }
 
-    fn fn_greet(string: String) -> String{
+    fn fn_greet(string: String) -> String {
         println!("Hola {}", string);
         string
     }
@@ -661,4 +671,110 @@ fn build_user(username: String, email: String) {
 
     let subjet = AlwaysEqual;
     println!("{:?}", subjet);
+}
+
+#[derive(Debug)]
+enum IpAddrKind {
+    V4,
+    V6,
+}
+#[derive(Debug)]
+enum IpaddrKindVariant {
+    V4(String),
+    V6(String),
+}
+#[derive(Debug)]
+struct IpAdrr {
+    kind: IpAddrKind,
+    address: String,
+}
+
+#[derive(Debug)]
+struct IpAddrVariant {
+    kind: IpaddrKindVariant,
+}
+#[derive(Debug)]
+enum VariantType {
+    VariantIp(u32, u32, u32),
+}
+
+#[derive(Debug)]
+enum Message {
+    Quit,
+    Move { x: i32, y: i32 },
+    Write(String),
+    ChangeColor(i32, i32, i32),
+}
+#[derive(Debug)]
+struct Car {
+    color: String,
+    transmission: Transmission,
+    convertible: bool,
+    mileage: u32,
+}
+
+// Declare enum for Car transmission type
+#[derive(Debug)]
+enum Transmission {
+    // todo!("Fix enum definition so code compiles");
+    Manual,
+    SemiAuto,
+    Automatic,
+}
+impl Message {
+    fn call(&self) {
+        // method nobody
+    }
+}
+struct QuitMessage; // unit struct
+struct MoveMessage {
+    x: i32,
+    y: i32,
+}
+struct WriteMessage(String); // tuple struct
+struct ChangeColorMessage(i32, i32, i32); // tuple struct
+fn enum_example() {
+    let version_six = IpAddrKind::V6;
+    let version_four = IpAddrKind::V4;
+
+    let varian_six = IpaddrKindVariant::V6(String::from("::01"));
+    VariantType::VariantIp(10, 0, 0);
+
+    let home = IpAdrr {
+        kind: IpAddrKind::V4,
+        address: String::from("127.0.0.1"),
+    };
+    let loopback = IpAdrr {
+        kind: IpAddrKind::V6,
+        address: String::from("::1"),
+    };
+    let varian_addr = IpAddrVariant {
+        kind: IpaddrKindVariant::V4(String::from("variant")),
+    };
+    println!(
+        "{:?} {} {:?} {:?}",
+        home.kind, home.address, varian_six, varian_addr.kind
+    );
+    println!(
+        "{:?} {:?} {:#?} {:#?} {:#?}",
+        version_six, version_four, home, loopback, varian_addr
+    );
+}
+fn route(ip_kind: IpAddrKind) {
+    let m = Message::Write(String::from("hello"));
+    m.call();
+    println!("{:?}", ip_kind);
+}
+fn car_factory(color: String, transmission: Transmission, convertible: bool) {
+    // Use the values of the input arguments
+    // All new cars always have zero mileage
+    // let car: Car = todo!("Create an instance of a `Car` struct");
+    let car_new = Car {
+        color,
+        convertible,
+        mileage: 10,
+        transmission,
+    };
+
+    println!("{:#?}", car_new);
 }
