@@ -717,22 +717,22 @@ struct Car {
 #[derive(Debug)]
 enum Transmission {
     // todo!("Fix enum definition so code compiles");
-    Manual,
-    SemiAuto,
-    Automatic,
+    _Manual,
+    _SemiAuto,
+    _Automatic,
 }
 impl Message {
     fn call(&self) {
         // method nobody
     }
 }
-struct QuitMessage; // unit struct
-struct MoveMessage {
+struct _QuitMessage; // unit struct
+struct _MoveMessage {
     x: i32,
     y: i32,
 }
-struct WriteMessage(String); // tuple struct
-struct ChangeColorMessage(i32, i32, i32); // tuple struct
+struct _WriteMessage(String); // tuple struct
+struct _ChangeColorMessage(i32, i32, i32); // tuple struct
 fn enum_example() {
     let version_six = IpAddrKind::V6;
     let version_four = IpAddrKind::V4;
@@ -765,7 +765,7 @@ fn route(ip_kind: IpAddrKind) {
     m.call();
     println!("{:?}", ip_kind);
 }
-fn car_factory(color: String, transmission: Transmission, convertible: bool) {
+fn _car_factory(color: String, transmission: Transmission, convertible: bool) {
     // Use the values of the input arguments
     // All new cars always have zero mileage
     // let car: Car = todo!("Create an instance of a `Car` struct");
@@ -777,4 +777,9 @@ fn car_factory(color: String, transmission: Transmission, convertible: bool) {
     };
 
     println!("{:#?}", car_new);
+}
+
+enum _Option<T> {
+    None,
+    Some(T),
 }
