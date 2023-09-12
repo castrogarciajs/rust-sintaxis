@@ -436,8 +436,13 @@ fn main() {
     Cuando el propietario sale del alcance, el valor se descartará.
 
 
+
      * */
 
+    value_in_cents(Coin::Penny);
+    value_in_cents(Coin::Nickel);
+    value_in_cents(Coin::Dime);
+    value_in_cents(Coin::Quarter(usState::Alabama));
     // let mut n = "s";
 
     let s1 = String::from("Clone string");
@@ -520,9 +525,25 @@ fn main() {
     enum_example();
     route(IpAddrKind::V4);
 
-    
+    value_in_cents(Coin::Quarter(usState::Alaska));
 
+    let dice_roll = 9;
+
+    match dice_roll {
+        3 => add_fancy_hat(),
+        7 => remove_fancy_hat(),
+        _ => reroll(),
+    }
+    let config_max = Some(3u8);
+
+    if let Some(max) = config_max {
+        println!("The maximum is configured to be {}", max);
+
+    }
 }
+fn add_fancy_hat() {}
+fn remove_fancy_hat() {}
+fn reroll() {}
 
 fn first_word(s: &String) -> usize {
     let bytes_string = s.as_bytes();
@@ -782,4 +803,37 @@ fn _car_factory(color: String, transmission: Transmission, convertible: bool) {
 enum _Option<T> {
     None,
     Some(T),
+}
+
+#[derive(Debug)]
+enum usState {
+    Alabama,
+    Alaska,
+}
+enum Coin {
+    Penny,
+    Nickel,
+    Dime,
+    Quarter(usState),
+}
+
+fn value_in_cents(coin: Coin) -> u8 {
+    plus_one(Some(5));
+    plus_one(None);
+    match coin {
+        Coin::Penny => 1,
+        Coin::Nickel => 5,
+        Coin::Dime => 10,
+        Coin::Quarter(state) => {
+            println!("{:#?}", state);
+            25
+        }
+    }
+}
+
+fn plus_one(i: Option<i32>) -> Option<i32> {
+    match i {
+        None => None,
+        Some(i) => Some(i * 1),
+    }
 }
