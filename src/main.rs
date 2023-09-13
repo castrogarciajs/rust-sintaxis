@@ -1,5 +1,15 @@
 use std::collections::{HashMap, HashSet};
 use std::io;
+use crate::garden::vegetables::Asparagus;
+use crate::module::hello_world;
+
+
+//     │   ├── module.rs (Módulo de Paquete)
+mod module;
+mod system;
+
+// La línea mod garden; le dice al compilador que incluya el código que encuentra en src/garden.rs, que es:
+pub mod garden;
 
 fn main() {
     // comentarios con rust
@@ -10,6 +20,9 @@ fn main() {
     da
     asd
      */
+    system::system_add();
+    let plant = Asparagus {};
+    println!("{:#?}", plant);
     println!("Probando NVIM");
     // desacer en nvim
     println!("Hola Rust en español"); // ";" muy importante si no el compilador molestará y no lo va compilar.
@@ -22,6 +35,7 @@ fn main() {
     // #[warn(unused_doc_domments)] - error de comentarios
     println!("Hello, world!");
 
+    hello_world();
     // Como se escribe una variable ?
 
     // #[warn(ununsed_variable)] -- Cuando no se usa una variable
