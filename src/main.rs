@@ -1,16 +1,20 @@
+mod module;
+mod system;
+mod garden;
+mod utils;
+mod example;
+mod kv;
+
 use std::collections::{HashMap, HashSet};
 use std::io;
 use crate::garden::vegetables::Asparagus;
 use crate::module::hello_world;
-
+use crate::example::coco;
+use kv::exec;
 
 //     │   ├── module.rs (Módulo de Paquete)
-mod module;
-mod system;
 
 // La línea mod garden; le dice al compilador que incluya el código que encuentra en src/garden.rs, que es:
-pub mod garden;
-
 fn main() {
     // comentarios con rust
     /*
@@ -20,6 +24,10 @@ fn main() {
     da
     asd
      */
+    
+    exec::exec_core();
+    coco::hello_coco();
+    utils::display::display();
     system::system_add();
     let plant = Asparagus {};
     println!("{:#?}", plant);
